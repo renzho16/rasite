@@ -10,15 +10,16 @@ button{font:inherit;letter-spacing:inherit;color:inherit;background:none;border:
 .view{position:fixed;inset:0;height:100dvh;opacity:0;visibility:hidden;transition:opacity .6s,visibility .6s}
 .view.on{opacity:1;visibility:visible}
 
-/* Cabecera global: el logo se centra en (left, top) para colocarlo como en cada referencia */
-#logo{position:fixed;left:8.25vw;top:7.6vh;z-index:9;width:max(7.5vw,56px);transform:translate(-50%,-50%)}
-#logo img{display:block;width:100%}
+/* Logo "ra" sin círculo: se dibuja con assets/logo.svg (el <img> del HTML queda oculto).
+   Se centra en (left, top) para colocarlo como en cada referencia; width = ancho del monograma. */
+#logo{position:fixed;left:8.28vw;top:7.6vh;z-index:9;width:max(4.3vw,44px);aspect-ratio:1019/588;background:url(../assets/logo.svg) center/contain no-repeat;transform:translate(-50%,-50%)}
+#logo img{display:none}
 #nm{position:fixed;left:50%;top:3.2vh;transform:translateX(-50%);z-index:9;font-weight:500;letter-spacing:.09em}
-body[data-view=archive] #logo{left:8.8vw;top:12.3vh;width:max(18.4vw,90px)}
+body[data-view=archive] #logo{left:8.8vw;top:12.4vh;width:max(10.5vw,70px)}
 body[data-view=archive] #nm{top:7.1vh;font-size:max(1.25vw,11px);font-weight:400;letter-spacing:.04em}
 body[data-view=quimera] #nm,body[data-view=statement] #nm,body[data-view=knock] #nm,body[data-view=statement] #logo{display:none}
-body[data-view=quimera] #logo{left:6.5vw;top:93.6vh;width:max(21vw,100px)}
-body[data-view=knock] #logo{left:4.7vw;top:6.2vw;width:14.6vw}
+body[data-view=quimera] #logo{left:5.6vw;top:94vh;width:max(14.5vw,90px)}
+body[data-view=knock] #logo{left:5.4vw;top:11.9vh;width:max(7.8vw,56px)}
 
 /* ===== HOME ===== */
 .nav{position:absolute;z-index:3;font-weight:500;letter-spacing:.09em}
