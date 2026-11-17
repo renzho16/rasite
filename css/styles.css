@@ -18,7 +18,7 @@ button{font:inherit;letter-spacing:inherit;color:inherit;background:none;border:
 body[data-view=archive] #logo{left:8.8vw;top:12.4vh;width:max(10.5vw,70px)}
 body[data-view=archive] #nm{top:7.1vh;font-size:max(1.25vw,11px);font-weight:400;letter-spacing:.04em}
 body[data-view=quimera] #nm,body[data-view=statement] #nm,body[data-view=knock] #nm,body[data-view=statement] #logo{display:none}
-body[data-view=quimera] #logo{left:5.6vw;top:94vh;width:max(14.5vw,90px)}
+body[data-view=quimera] #logo{left:6.1vw;top:94vh;width:max(13.4vw,90px)}
 body[data-view=knock] #logo{left:5.4vw;top:11.9vh;width:max(7.8vw,56px)}
 
 /* ===== HOME ===== */
@@ -79,8 +79,9 @@ body[data-view=knock] #logo{left:5.4vw;top:11.9vh;width:max(7.8vw,56px)}
 .w{position:absolute;bottom:7vh;writing-mode:vertical-rl;transform:rotate(180deg);font:500 min(25.5dvh,14.4vw)/.9 var(--sans);letter-spacing:-.04em;white-space:nowrap}
 .w.a{right:50%}
 .w.b{left:50%}
-.g{text-shadow:-.012em 0 rgba(255,40,40,.85),.012em 0 rgba(40,210,255,.85),.05em 0 rgba(255,255,255,.3),.11em 0 rgba(255,255,255,.15),-.05em 0 rgba(255,255,255,.3);filter:url(#gl);animation:jit 2.6s steps(1) infinite}
-@keyframes jit{0%,100%{transform:rotate(180deg)}8%{transform:rotate(180deg) translateX(.6vw) skewY(1deg)}10%{transform:rotate(180deg) translateX(-.5vw)}12%{transform:rotate(180deg)}55%{transform:rotate(180deg) translateY(1vh) skewY(-2deg)}57%{transform:rotate(180deg)}}
+/* La palabra glitch se comprime (--sy, calculado en app.js) para medir lo mismo que "creative" */
+.g{transform-origin:50% 0;transform:rotate(180deg) scaleY(var(--sy,1));text-shadow:-.012em 0 rgba(255,40,40,.85),.012em 0 rgba(40,210,255,.85),.04em 0 rgba(255,255,255,.22);filter:url(#gl);animation:jit 2.6s steps(1) infinite}
+@keyframes jit{0%,100%{transform:rotate(180deg) scaleY(var(--sy,1))}8%{transform:rotate(180deg) scaleY(var(--sy,1)) translateX(.6vw) skewY(1deg)}10%{transform:rotate(180deg) scaleY(var(--sy,1)) translateX(-.5vw)}12%{transform:rotate(180deg) scaleY(var(--sy,1))}55%{transform:rotate(180deg) scaleY(var(--sy,1)) translateY(1vh) skewY(-2deg)}57%{transform:rotate(180deg) scaleY(var(--sy,1))}}
 .mail{position:absolute;left:5.9%;bottom:11.5%;z-index:2;font:700 clamp(12px,1.55vw,30px) var(--disp);letter-spacing:0}
 .sil{position:absolute;right:0;bottom:0;height:50dvh;width:auto}
 

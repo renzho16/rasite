@@ -12,6 +12,10 @@ const fit=()=>$$('#statement .ln').forEach(e=>{
   if(innerWidth/innerHeight>1.2)e.style.transform=`scaleX(${innerWidth*e.dataset.w/100/e.offsetWidth})`});
 addEventListener('resize',fit);fit();document.fonts&&document.fonts.ready.then(fit);
 
+// KNOCK: la palabra glitch se comprime para medir lo mismo que "creative"
+const fitG=()=>{const a=$('.w.a'),g=$('.w.g');g.style.setProperty('--sy',1);g.style.setProperty('--sy',Math.min(1,a.offsetHeight/g.offsetHeight))};
+addEventListener('resize',fitG);fitG();document.fonts&&document.fonts.ready.then(fitG);
+
 /* ---------- Datos: CSV publicado + enlaces de Drive ---------- */
 // Extrae el ID de un enlace de Drive (/d/ID/view, ?id=ID, open?id=ID...)
 const driveId=u=>((u||'').match(/\/d\/([\w-]{15,})|[?&]id=([\w-]{15,})/)||[]).slice(1).find(Boolean);
@@ -101,7 +105,7 @@ const cur=()=>{const h=location.hash.slice(1);return VIEWS.includes(h)?h:'home'}
 function route(){
   const v=cur();lb.hidden=true;document.body.dataset.view=v;
   $$('.view').forEach(e=>e.classList.toggle('on',e.id==v));
-  if(v=='archive')showArchive();if(v=='quimera')showQuimera();if(v=='statement')fit();
+  if(v=='archive')showArchive();if(v=='quimera')showQuimera();if(v=='statement')fit();if(v=='knock')fitG();
 }
 addEventListener('hashchange',route);route();
 addEventListener('keydown',e=>{
