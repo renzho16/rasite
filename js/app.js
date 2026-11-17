@@ -13,7 +13,9 @@ const fit=()=>$$('#statement .ln').forEach(e=>{
 addEventListener('resize',fit);fit();document.fonts&&document.fonts.ready.then(fit);
 
 // KNOCK: la palabra glitch se comprime para medir lo mismo que "creative"
-const fitG=()=>{const a=$('.w.a'),g=$('.w.g');g.style.setProperty('--sy',1);g.style.setProperty('--sy',Math.min(1,a.offsetHeight/g.offsetHeight))};
+const fitG=()=>{const a=$('.w.a'),g=$('.w.g');g.style.setProperty('--sy',1);g.style.marginBottom='0';
+  const s=Math.min(1,a.offsetHeight/g.offsetHeight);g.style.setProperty('--sy',s);
+  g.style.marginBottom=-g.offsetHeight*(1-s)/2+'px'};   // mantiene la base alineada con "creative"
 addEventListener('resize',fitG);fitG();document.fonts&&document.fonts.ready.then(fitG);
 
 /* ---------- Datos: CSV publicado + enlaces de Drive ---------- */

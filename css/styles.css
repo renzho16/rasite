@@ -80,7 +80,7 @@ body[data-view=knock] #logo{left:5.4vw;top:11.9vh;width:max(7.8vw,56px)}
 .w.a{right:50%}
 .w.b{left:50%}
 /* La palabra glitch se comprime (--sy, calculado en app.js) para medir lo mismo que "creative" */
-.g{transform-origin:50% 0;transform:rotate(180deg) scaleY(var(--sy,1));text-shadow:-.012em 0 rgba(255,40,40,.85),.012em 0 rgba(40,210,255,.85),.04em 0 rgba(255,255,255,.22);filter:url(#gl);animation:jit 2.6s steps(1) infinite}
+.g{transform:rotate(180deg) scaleY(var(--sy,1));text-shadow:-.012em 0 rgba(255,40,40,.85),.012em 0 rgba(40,210,255,.85),.04em 0 rgba(255,255,255,.22);filter:url(#gl);animation:jit 2.6s steps(1) infinite}
 @keyframes jit{0%,100%{transform:rotate(180deg) scaleY(var(--sy,1))}8%{transform:rotate(180deg) scaleY(var(--sy,1)) translateX(.6vw) skewY(1deg)}10%{transform:rotate(180deg) scaleY(var(--sy,1)) translateX(-.5vw)}12%{transform:rotate(180deg) scaleY(var(--sy,1))}55%{transform:rotate(180deg) scaleY(var(--sy,1)) translateY(1vh) skewY(-2deg)}57%{transform:rotate(180deg) scaleY(var(--sy,1))}}
 .mail{position:absolute;left:5.9%;bottom:11.5%;z-index:2;font:700 clamp(12px,1.55vw,30px) var(--disp);letter-spacing:0}
 .sil{position:absolute;right:0;bottom:0;height:50dvh;width:auto}
