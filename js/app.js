@@ -6,6 +6,12 @@ const VIEWS=['home','archive','statement','quimera','knock'],S=window.SITE,pad=n
 // Entrada escalonada de las letras del titular
 $$('#title>*').forEach((e,i)=>e.style.animationDelay=i*80+'ms');
 
+// STATEMENT: estira cada línea al ancho de la referencia (sea cual sea la tipografía cargada)
+const fit=()=>$$('#statement .ln').forEach(e=>{
+  e.style.transform='';
+  if(innerWidth/innerHeight>1.2)e.style.transform=`scaleX(${innerWidth*e.dataset.w/100/e.offsetWidth})`});
+addEventListener('resize',fit);fit();document.fonts&&document.fonts.ready.then(fit);
+
 /* ---------- Datos: CSV publicado + enlaces de Drive ---------- */
 // Extrae el ID de un enlace de Drive (/d/ID/view, ?id=ID, open?id=ID...)
 const driveId=u=>((u||'').match(/\/d\/([\w-]{15,})|[?&]id=([\w-]{15,})/)||[]).slice(1).find(Boolean);
@@ -66,17 +72,24 @@ addEventListener('touchend',e=>{const d=e.changedTouches[0].clientX-tx;if(Math.a
 
 /* ---------- QUIMERA: mosaico + lightbox ---------- */
 let Q=[],li=0;const lb=$('#lb'),lbi=$('img',lb);
+const pos=b=>`left:${b[0]/16.72}%;top:${b[1]/9.41}%;width:${b[2]/16.72}%;height:${b[3]/9.41}%`;
+function mk(it,i,box){
+  const b=document.createElement('button'),im=new Image();
+  b.className='sl';b.setAttribute('aria-label',it.name||'Abrir');if(box)b.style.cssText=pos(box);
+  im.loading='lazy';im.alt=it.name||'';im.onload=()=>im.classList.add('ok');
+  im.onerror=()=>b.classList.add('e');                       // miniatura rota: queda como celda vacía
+  im.src=it.thumb;b.append(im);b.onclick=()=>openLb(i);return b}
+function render(){
+  const L=S.quimera.layout||[];let n=0;
+  $('#grid').replaceChildren(...L.map(b=>{
+    if(!b[4]&&n<Q.length)return mk(Q[n],n++,b);
+    const e=document.createElement('div');e.className='sl e';e.style.cssText=pos(b);return e}));
+  $('#more').replaceChildren(...Q.slice(n).map((it,j)=>mk(it,n+j)));
+}
 async function showQuimera(){
   if(Q.length)return;note('#qmsg','…');
-  try{
-    Q=await load('quimera');note('#qmsg','');
-    $('#grid').replaceChildren(...Q.map((it,i)=>{
-      const b=document.createElement('button'),im=new Image();
-      b.setAttribute('aria-label',it.name||'Abrir');im.loading='lazy';im.alt=it.name||'';
-      im.onload=()=>im.classList.add('ok');
-      im.onerror=()=>b.remove();                              // miniatura rota: se quita la celda
-      im.src=it.thumb;b.append(im);b.onclick=()=>openLb(i);return b}));
-  }catch(e){Q=[];note('#qmsg','No se pudo cargar la galería.',showQuimera)}
+  try{Q=await load('quimera');note('#qmsg','');render()}
+  catch(e){Q=[];note('#qmsg','No se pudo cargar la galería.',showQuimera)}
 }
 const openLb=i=>{li=i;lb.hidden=false;lbi.src=Q[i].full};
 const lstep=d=>{li=(li+d+Q.length)%Q.length;lbi.src=Q[li].full};
@@ -88,7 +101,7 @@ const cur=()=>{const h=location.hash.slice(1);return VIEWS.includes(h)?h:'home'}
 function route(){
   const v=cur();lb.hidden=true;document.body.dataset.view=v;
   $$('.view').forEach(e=>e.classList.toggle('on',e.id==v));
-  if(v=='archive')showArchive();if(v=='quimera')showQuimera();
+  if(v=='archive')showArchive();if(v=='quimera')showQuimera();if(v=='statement')fit();
 }
 addEventListener('hashchange',route);route();
 addEventListener('keydown',e=>{
