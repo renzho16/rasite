@@ -1,8 +1,3 @@
-/* Configuración de las galerías.
-   FASE 2: pega en `csv` la URL del CSV publicado de cada hoja de Google Sheets
-   (Archivo > Compartir > Publicar en la web > formato CSV).
-   Columnas: nombre, link_drive, orden, visible (opcional: no / false / 0 la oculta).
-   Si `csv` está vacío se usan las imágenes demo de /assets/demo. */
 const img=n=>`assets/demo/d${String(n).padStart(2,'0')}.webp`;
 const demo=list=>list.map((n,i)=>({name:'Demo '+(i+1),src:img(n)}));
 
@@ -22,3 +17,9 @@ window.SITE={
   archive:{csv:'',demo:demo([1,2,3,4,5,6,7,8])},
   quimera:{csv:'',layout,demo:demo([1,2,9,10,3,6,11,4,7,12,9,5,8,13])}
 };
+
+// Foto del titular de la home: WebP (escala de grises) en base64, repartido en 4 archivos de texto js/title-img-N.js.
+// Se cargan en orden y, al terminar, se asigna a la <image> del titular. Así no hace falta subir ningún binario.
+(()=>{for(let i=1;i<=4;i++){const s=document.createElement('script');s.src=`js/title-img-${i}.js`;s.async=false;
+  if(i==4)s.onload=()=>document.querySelector('#title image').setAttribute('href','data:image/webp;base64,'+window.TI);
+  document.head.append(s)}})();
