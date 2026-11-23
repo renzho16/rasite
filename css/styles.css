@@ -31,6 +31,8 @@ body[data-view=knock] #logo{left:5.4vw;top:11.9vh;width:max(7.8vw,56px)}
 #scene .h:hover text,#scene .h:hover path{fill:#fff}   /* hover: blanco puro (logo y textos principales) */
 #scene .h:hover line{stroke:#fff}
 body[data-view=home] #logo,body[data-view=home] #nm{display:none}
+/* Sin las etiquetas de ruido que invadían el borde de la mano robótica (junto a la Q) */
+#scene .er g{display:none}
 
 /* ===== ARCHIVE ===== */
 .count{position:absolute;right:3vw;top:4.7vh;font:var(--sm)/1 var(--mono)}
