@@ -33,6 +33,10 @@ body[data-view=knock] #logo{left:5.4vw;top:11.9vh;width:max(7.8vw,56px)}
 body[data-view=home] #logo,body[data-view=home] #nm{display:none}
 /* Sin las etiquetas de ruido que invadían el borde de la mano robótica (junto a la Q) */
 #scene .er g{display:none}
+/* Sin contornos de foco/clic (el azul y el blanco del navegador) en los botones, ni resaltado al tocar o seleccionar */
+html{-webkit-tap-highlight-color:transparent}
+#scene{-webkit-user-select:none;user-select:none}
+#scene a,[data-go],button,#scene a:focus,[data-go]:focus,button:focus,#scene a:focus-visible,[data-go]:focus-visible,button:focus-visible{outline:none}
 
 /* ===== ARCHIVE ===== */
 .count{position:absolute;right:3vw;top:4.7vh;font:var(--sm)/1 var(--mono)}
