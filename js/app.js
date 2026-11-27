@@ -102,6 +102,15 @@ const lstep=d=>{li=(li+d+Q.length)%Q.length;lbi.src=Q[li].full};
 $('#lx').onclick=()=>lb.hidden=true;$('#lp').onclick=()=>lstep(-1);$('#ln').onclick=()=>lstep(1);
 lb.onclick=e=>{if(e.target===lb)lb.hidden=true};
 
+/* ---------- Enlaces internos sin URL visible ----------
+   Los enlaces #hash se activan por JS (sin href) para que el navegador no muestre la dirección
+   en la esquina inferior al pasar el puntero. Funcionan con clic y con teclado (Enter / espacio). */
+$$('a[href^="#"]').forEach(a=>{
+  const go=a.getAttribute('href');a.removeAttribute('href');a.setAttribute('role','link');a.setAttribute('tabindex','0');a.style.cursor='pointer';
+  const open=()=>{location.hash=go};
+  a.addEventListener('click',e=>{e.preventDefault();open()});
+  a.addEventListener('keydown',e=>{if(e.key=='Enter'||e.key==' '){e.preventDefault();open()}})});
+
 /* ---------- Router por #hash + teclado ---------- */
 const cur=()=>{const h=location.hash.slice(1);return VIEWS.includes(h)?h:'home'};
 function route(){
