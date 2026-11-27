@@ -10,16 +10,16 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=IBM+Plex+Mono&family=Share+Tech+Mono&family=Inter:wght@400;500&family=Newsreader:opsz,wght@6..72,500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/styles.css">
+<link rel="stylesheet" href="css/styles.css?v=4">
 </head>
 <body data-view="home">
 
 <!-- Filtro SVG del efecto glitch de KNOCK (barrido horizontal) -->
 <svg width="0" height="0" style="position:absolute" aria-hidden="true"><filter id="gl" x="-10%" y="-5%" width="120%" height="110%"><feTurbulence type="fractalNoise" baseFrequency="0.002 0.09" numOctaves="1" seed="4" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="45" xChannelSelector="R" yChannelSelector="G"/></filter></svg>
 
-<!-- Cabecera global: logo (vuelve a la home) y nombre -->
-<a id="logo" href="#home" aria-label="Inicio"><img src="assets/logo.webp" alt="ra"></a>
-<a id="nm" href="#home">RENZHO ALVERIT</a>
+<!-- Cabecera global: logo (vuelve a la home) y nombre. Los botones llevan data-go (sin href) para que el navegador no muestre ninguna URL -->
+<a id="logo" data-go="#home" aria-label="Inicio"><img src="assets/logo.webp" alt="ra"></a>
+<a id="nm" data-go="#home">RENZHO ALVERIT</a>
 
 <!-- HOME: escena SVG de 1376x768 (coordenadas de la referencia) con titular vectorial + foto WebP -->
 <main id="home" class="view on">
@@ -35,14 +35,14 @@
 <!-- Titular: foto WebP recortada por las letras vectoriales -->
 <g id="title" role="img" aria-label="Richay Hapiq" clip-path="url(#tc)"><image href="assets/title.webp" x="130" y="158" width="1113" height="458"/></g>
 <!-- Cabecera -->
-<a href="#home" class="h" aria-label="Inicio"><rect x="127" y="66" width="120" height="74" fill="#000" fill-opacity="0"/><path transform="translate(132.3 71.5) scale(.1069)" fill="#2b2b2b" fill-rule="evenodd" d="M605.3 0.0L660.3 19.7L687.7 37.0L706.0 54.3L724.7 82.3L736.7 115.7L739.7 143.7L735.0 167.0L725.0 187.3L714.3 201.7L699.3 216.0L675.0 232.0L498.3 300.0L454.7 323.7L420.3 352.3L406.7 368.3L391.0 393.7L381.7 417.0L377.3 436.7L376.0 459.7L380.0 484.3L388.3 507.3L397.3 522.7L414.0 542.3L429.3 555.3L456.3 571.0L476.7 578.7L501.3 584.7L534.7 587.3L592.0 580.7L621.0 571.7L645.7 560.3L672.3 543.7L690.0 528.7L721.3 490.3L744.7 440.0L752.3 480.7L765.0 512.3L790.0 544.3L815.3 562.3L839.7 572.7L863.7 577.7L1018.0 578.0L983.7 561.0L965.0 544.3L949.7 521.3L937.7 488.3L932.3 450.3L931.3 167.3L920.7 114.0L912.7 93.7L898.0 68.3L876.3 43.3L851.3 24.3L829.0 13.0L801.7 4.3L768.0 0.0ZM741.0 171.3L741.7 172.3L741.7 383.0L740.0 400.3L738.0 410.3L731.0 432.7L719.7 455.0L705.7 473.3L690.0 487.0L676.0 495.7L660.7 502.0L640.7 506.0L619.3 505.3L608.3 503.0L598.7 499.7L588.7 495.0L581.3 490.3L565.3 476.3L553.7 459.7L547.0 444.0L542.7 423.3L542.7 401.7L547.7 377.3L554.3 360.0L565.3 340.0L571.7 330.7L586.0 312.7L602.3 296.0L615.7 285.3L629.3 276.0L672.0 252.3L692.7 239.3L715.3 219.3L722.7 210.3L729.3 199.7L734.3 189.7ZM0.7 0.3L50.0 19.0L80.3 44.7L100.7 81.3L109.0 125.0L109.0 453.0L104.0 486.3L88.7 522.3L67.7 547.0L38.3 566.0L4.3 577.7L414.7 578.0L376.7 562.7L348.0 541.0L327.3 512.0L315.7 478.7L312.0 445.7L312.0 201.3L315.7 170.7L323.7 143.7L348.7 98.7L389.3 56.7L440.7 26.0L481.7 14.7L454.0 36.7L432.3 68.7L424.3 104.3L431.3 144.3L450.0 173.7L482.0 196.3L517.0 204.7L554.0 199.7L574.3 190.3L592.7 176.7L609.3 157.0L619.7 135.3L624.7 113.3L623.7 84.7L617.7 65.0L605.7 44.0L577.0 18.3L545.7 5.3L510.0 1.0L461.7 5.3L414.3 19.3L378.7 38.0L351.0 59.0L316.7 97.0L315.0 0.0Z"/></a>
-<a href="#home" class="h"><rect x="586" y="78" width="209" height="28" fill="#000" fill-opacity="0"/><text x="690.5" y="100" text-anchor="middle" textLength="190" font-size="25" fill="#949494">RENZHO ALVERIT</text></a>
+<a data-go="#home" class="h" aria-label="Inicio"><rect x="127" y="66" width="120" height="74" fill="#000" fill-opacity="0"/><path transform="translate(132.3 71.5) scale(.1069)" fill="#2b2b2b" fill-rule="evenodd" d="M605.3 0.0L660.3 19.7L687.7 37.0L706.0 54.3L724.7 82.3L736.7 115.7L739.7 143.7L735.0 167.0L725.0 187.3L714.3 201.7L699.3 216.0L675.0 232.0L498.3 300.0L454.7 323.7L420.3 352.3L406.7 368.3L391.0 393.7L381.7 417.0L377.3 436.7L376.0 459.7L380.0 484.3L388.3 507.3L397.3 522.7L414.0 542.3L429.3 555.3L456.3 571.0L476.7 578.7L501.3 584.7L534.7 587.3L592.0 580.7L621.0 571.7L645.7 560.3L672.3 543.7L690.0 528.7L721.3 490.3L744.7 440.0L752.3 480.7L765.0 512.3L790.0 544.3L815.3 562.3L839.7 572.7L863.7 577.7L1018.0 578.0L983.7 561.0L965.0 544.3L949.7 521.3L937.7 488.3L932.3 450.3L931.3 167.3L920.7 114.0L912.7 93.7L898.0 68.3L876.3 43.3L851.3 24.3L829.0 13.0L801.7 4.3L768.0 0.0ZM741.0 171.3L741.7 172.3L741.7 383.0L740.0 400.3L738.0 410.3L731.0 432.7L719.7 455.0L705.7 473.3L690.0 487.0L676.0 495.7L660.7 502.0L640.7 506.0L619.3 505.3L608.3 503.0L598.7 499.7L588.7 495.0L581.3 490.3L565.3 476.3L553.7 459.7L547.0 444.0L542.7 423.3L542.7 401.7L547.7 377.3L554.3 360.0L565.3 340.0L571.7 330.7L586.0 312.7L602.3 296.0L615.7 285.3L629.3 276.0L672.0 252.3L692.7 239.3L715.3 219.3L722.7 210.3L729.3 199.7L734.3 189.7ZM0.7 0.3L50.0 19.0L80.3 44.7L100.7 81.3L109.0 125.0L109.0 453.0L104.0 486.3L88.7 522.3L67.7 547.0L38.3 566.0L4.3 577.7L414.7 578.0L376.7 562.7L348.0 541.0L327.3 512.0L315.7 478.7L312.0 445.7L312.0 201.3L315.7 170.7L323.7 143.7L348.7 98.7L389.3 56.7L440.7 26.0L481.7 14.7L454.0 36.7L432.3 68.7L424.3 104.3L431.3 144.3L450.0 173.7L482.0 196.3L517.0 204.7L554.0 199.7L574.3 190.3L592.7 176.7L609.3 157.0L619.7 135.3L624.7 113.3L623.7 84.7L617.7 65.0L605.7 44.0L577.0 18.3L545.7 5.3L510.0 1.0L461.7 5.3L414.3 19.3L378.7 38.0L351.0 59.0L316.7 97.0L315.0 0.0Z"/></a>
+<a data-go="#home" class="h"><rect x="586" y="78" width="209" height="28" fill="#000" fill-opacity="0"/><text x="690.5" y="100" text-anchor="middle" textLength="190" font-size="25" fill="#949494">RENZHO ALVERIT</text></a>
 <text x="690" y="119.5" text-anchor="middle" textLength="423" font-size="15.6" fill="#858585">REF:RA-AH-001 | AUTHOR:RENZHO ALVERIT | CLASSIFIED</text>
 <!-- Navegación -->
-<a href="#archive" class="h"><rect x="52" y="318" width="32" height="135" fill="#000" fill-opacity="0"/><text transform="translate(75 385.5) rotate(-90)" text-anchor="middle" textLength="124" font-size="19" fill="#999">[01] VISUALS</text></a>
-<a href="#statement" class="h"><rect x="1292" y="326" width="32" height="118" fill="#000" fill-opacity="0"/><text transform="translate(1302 385) rotate(90)" text-anchor="middle" textLength="107" font-size="19.6" fill="#979797">[02] AXIOM</text></a>
-<a href="#quimera" class="h"><rect x="590" y="674" width="188" height="34" fill="#000" fill-opacity="0"/><text x="684" y="698.5" text-anchor="middle" textLength="173" font-size="26.5" fill="#8c8c8c">[00] QUIMERA</text><line x1="598" y1="691" x2="770" y2="691" stroke="#8c8c8c" stroke-width="2"/></a>
-<a href="#knock" class="h"><rect x="1178" y="704" width="136" height="34" fill="#000" fill-opacity="0"/><text x="1246" y="728" text-anchor="middle" textLength="121" font-size="22.2" fill="#b1b1b1">[03] KNOCK</text></a>
+<a data-go="#archive" class="h"><rect x="52" y="318" width="32" height="135" fill="#000" fill-opacity="0"/><text transform="translate(75 385.5) rotate(-90)" text-anchor="middle" textLength="124" font-size="19" fill="#999">[01] VISUALS</text></a>
+<a data-go="#statement" class="h"><rect x="1292" y="326" width="32" height="118" fill="#000" fill-opacity="0"/><text transform="translate(1302 385) rotate(90)" text-anchor="middle" textLength="107" font-size="19.6" fill="#979797">[02] AXIOM</text></a>
+<a data-go="#quimera" class="h"><rect x="590" y="674" width="188" height="34" fill="#000" fill-opacity="0"/><text x="684" y="698.5" text-anchor="middle" textLength="173" font-size="26.5" fill="#8c8c8c">[00] QUIMERA</text><line x1="598" y1="691" x2="770" y2="691" stroke="#8c8c8c" stroke-width="2"/></a>
+<a data-go="#knock" class="h"><rect x="1178" y="704" width="136" height="34" fill="#000" fill-opacity="0"/><text x="1246" y="728" text-anchor="middle" textLength="121" font-size="22.2" fill="#b1b1b1">[03] KNOCK</text></a>
 </svg>
 </main>
 
@@ -60,7 +60,7 @@
   <i class="strip"></i>
   <h1><span class="ln" data-w="95.3">We sculpt the reverse</span><span class="ln" data-w="95.6">of the irreversible fruit</span><span class="ln" data-w="92.7">so that the structure</span><span class="ln" data-w="52.8">may survive</span><span class="ln" data-w="22">time.</span></h1>
   <img class="eye" src="assets/eye.webp" alt="">
-  <a class="tag" href="#home">Real needn’t<br>be perfect.</a>
+  <a class="tag" data-go="#home">Real needn’t<br>be perfect.</a>
 </section>
 
 <!-- QUIMERA: mosaico con la rejilla de la referencia (coordenadas en js/config.js) -->
@@ -86,7 +86,7 @@
   <button class="step r" id="ln">NEXT</button>
 </div>
 
-<script src="js/config.js"></script>
-<script src="js/app.js"></script>
+<script src="js/config.js?v=4"></script>
+<script src="js/app.js?v=4"></script>
 </body>
 </html>

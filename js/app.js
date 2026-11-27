@@ -103,10 +103,10 @@ $('#lx').onclick=()=>lb.hidden=true;$('#lp').onclick=()=>lstep(-1);$('#ln').oncl
 lb.onclick=e=>{if(e.target===lb)lb.hidden=true};
 
 /* ---------- Enlaces internos sin URL visible ----------
-   Los enlaces #hash se activan por JS (sin href) para que el navegador no muestre la dirección
-   en la esquina inferior al pasar el puntero. Funcionan con clic y con teclado (Enter / espacio). */
-$$('a[href^="#"]').forEach(a=>{
-  const go=a.getAttribute('href');a.removeAttribute('href');a.setAttribute('role','link');a.setAttribute('tabindex','0');a.style.cursor='pointer';
+   Los botones de navegación no llevan href (llevan data-go="#vista"): así el navegador no muestra
+   ninguna dirección en la esquina al pasar el puntero. Funcionan con clic y con teclado (Enter / espacio). */
+$$('[data-go]').forEach(a=>{
+  const go=a.dataset.go;a.setAttribute('role','link');a.setAttribute('tabindex','0');a.style.cursor='pointer';
   const open=()=>{location.hash=go};
   a.addEventListener('click',e=>{e.preventDefault();open()});
   a.addEventListener('keydown',e=>{if(e.key=='Enter'||e.key==' '){e.preventDefault();open()}})});
